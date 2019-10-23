@@ -1,6 +1,10 @@
 # FlexLayout
 
+
 FlexLayout is a layout manager that arranges React components in multiple tab sets, these can be resized and moved.
+
+[![CircleCI](https://img.shields.io/circleci/project/github/robertu/FlexLayout-bp3/master.svg)](https://circleci.com/gh/robertu/FlexLayout-bp3)
+
 
 ![FlexLayout Demo Screenshot](/../screenshots/github_images/v0.20/demo1.png?raw=true "FlexLayout Demo Screenshot")
 
@@ -158,12 +162,12 @@ class Main extends React.Component {
 }
 
 ReactDOM.render(<Main/>, document.getElementById("container"));
-```		
+```
 (See the examples for full source code)
 
 The above code would render two tabsets horizontally each containing a single tab that hosts a button component. The tabs could be moved and resized by dragging and dropping. Additional grids could be added to the layout by sending actions to the model.
 
-Try it now using [JSFiddle](https://jsfiddle.net/9x6hecdw/1) 
+Try it now using [JSFiddle](https://jsfiddle.net/9x6hecdw/1)
 
 
 The model is built up using 4 types of 'node':
@@ -183,7 +187,7 @@ The model json contains 3 top level elements:
 
 * global - where global options are defined
 * layout - where the main row/tabset/tabs layout hierarchy is defined
-* borders - (optional) where up to 4 borders are defined ("top", "bottom", "left", "right"). 
+* borders - (optional) where up to 4 borders are defined ("top", "bottom", "left", "right").
 
 Weights on rows and tabsets specify the relative weight of these nodes within the parent row, the actual values do not matter just their relative values (ie two tabsets of weights 30,70 would render the same if they had weights of 3,7).
 
@@ -330,7 +334,7 @@ Inherited defaults will take their value from the associated global attributes (
 | icon | *inherited* | |
 | enableRenderOnDemand | *inherited* | |
 
-Tab nodes have a getExtraData() method that initially returns an empty object, this is the place to 
+Tab nodes have a getExtraData() method that initially returns an empty object, this is the place to
 add extra data to a tab node that will not be saved.
 
 
@@ -447,7 +451,7 @@ This would add a new grid component to the tabset with id "NAVIGATION".
 
 ## Tab Node Events
 
-You can handle events on nodes by adding a listener, this would typically be done 
+You can handle events on nodes by adding a listener, this would typically be done
 in the components constructor() method.
 
 Example:
