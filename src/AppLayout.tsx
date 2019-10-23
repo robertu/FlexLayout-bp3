@@ -1,10 +1,11 @@
 import * as React from "react";
+import AppHeader from "./AppHeader";
+import "./AppLayout.less";
 import Model from "./model/Model";
 import Layout from "./view/Layout";
-import { AppHeader } from "./AppHeader";
-import "./AppLayout.less";
 
-export interface AppLayoutProps {
+
+export interface IAppLayoutProps {
   startSettings: any;
   menuLogo: any;
   customMenu: any;
@@ -14,7 +15,7 @@ export interface AppLayoutProps {
   userMenu: any;
 }
 
-const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title, component, userMenu}: AppLayoutProps) => {
+const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title, component, userMenu}: IAppLayoutProps) => {
   const [layoutComponents, setLayoutComponents] = React.useState<any>(startSettings);
   const [model, setModel] = React.useState<any>(Model.fromJson(startSettings));
   const [layoutStyle, setLayoutStyle] = React.useState<any>({left: "6px,", right: "6px", bottom: "6px"});

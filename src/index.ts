@@ -1,3 +1,4 @@
+import AppLayout from "./AppLayout";
 import DockLocation from "./DockLocation";
 import DragDrop from "./DragDrop";
 import DropInfo from "./DropInfo";
@@ -15,7 +16,6 @@ import TabSetNode from "./model/TabSetNode";
 import Orientation from "./Orientation";
 import Rect from "./Rect";
 import Layout from "./view/Layout";
-import AppLayout from "./AppLayout";
 
 export {
     Layout,

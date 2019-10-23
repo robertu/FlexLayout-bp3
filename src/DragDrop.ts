@@ -2,7 +2,7 @@ import Rect from "./Rect";
 
 const canUseDOM = !!(
     (typeof window !== "undefined" &&
-    window.document && 
+    window.document &&
     window.document.createElement)
   );
 
@@ -97,9 +97,9 @@ class DragDrop {
         const posEvent = this._getLocationEvent(event);
         this.addGlass(fDragCancel);
 
-        if (this._dragging) { 
-          console.warn("this._dragging true on startDrag should never happen")
-        }
+        // if (this._dragging) { // TODO
+        //   console.warn("this._dragging true on startDrag should never happen");
+        // }
 
         if (event) {
             this._startX = posEvent.clientX;
@@ -107,8 +107,7 @@ class DragDrop {
             this._glass!.style.cursor = getComputedStyle(event.target as Element).cursor;
             this._stopPropagation(event);
             this._preventDefault(event);
-        }
-        else {
+        } else {
             this._startX = 0;
             this._startY = 0;
             this._glass!.style.cursor = "default";

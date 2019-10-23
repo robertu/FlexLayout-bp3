@@ -50,7 +50,7 @@ class RowNode extends Node implements IDropTarget {
     return attributeDefinitions;
   }
   /** @hidden @internal */
-  private _drawChildren: Array<(Node)>;
+  private _drawChildren: (Node)[];
 
   /** @hidden @internal */
   constructor(model: Model, json: any) {

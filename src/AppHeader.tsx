@@ -1,15 +1,15 @@
 import { Alignment, Button, Classes, Menu, MenuDivider, MenuItem, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Popover, Position } from "@blueprintjs/core";
 import * as React from "react";
 // import React, { MouseEvent } from 'react';
-import { AppHeaderLogo } from './AppHeaderLogo';
+import { AppHeaderLogo } from "./AppHeaderLogo";
 
-export interface ThemedIconProps {
+export interface IThemedIconProps {
   lightTheme: boolean;
   width: number;
   height: number;
 }
 
-export interface ThemedHeaderProps {
+export interface IThemedHeaderProps {
   lightTheme: boolean;
   themeSwitch: () => void;
   toolbarSettings: (name: string) => void;
@@ -22,7 +22,7 @@ export interface ThemedHeaderProps {
   // addToTopRight: (name: string) => (event: MouseEvent) => void;
 }
 
-export const CustomLogo = ({ lightTheme, width, height }: ThemedIconProps) => <AppHeaderLogo width={width} height={height} lightTheme={lightTheme} />;
+export const CustomLogo = ({ lightTheme, width, height }: IThemedIconProps) => <AppHeaderLogo width={width} height={height} lightTheme={lightTheme} />;
 
 export const AppHeader = ({
   lightTheme,
@@ -34,7 +34,7 @@ export const AppHeader = ({
   leftMenu,
   title,
   userMenu
-}: ThemedHeaderProps) => (
+}: IThemedHeaderProps) => (
   <Navbar className={lightTheme ? undefined : Classes.DARK}>
     <NavbarGroup align={Alignment.LEFT}>
       <Popover
@@ -46,11 +46,26 @@ export const AppHeader = ({
               layoutComponents.borders.map((border: any, index: number) => {
                 switch(border.location) {
                   case "bottom":
-                    return <MenuItem key={index} icon={(border.show || border.show === undefined) ? "remove-row-bottom" : "add-row-bottom"} text={(border.show || border.show === undefined) ? "Hide bottom dock" : "Show bottom dock"} onClick={() => toolbarSettings(border.location)} />;
+                    return <MenuItem
+                      key={index}
+                      icon={border.show === true ? "remove-row-bottom" : "add-row-bottom"}
+                      text={border.show === true ? "Hide bottom dock" : "Show bottom dock"}
+                      onClick={() => toolbarSettings(border.location)}
+                    />;
                   case "left":
-                    return <MenuItem key={index} icon={(border.show || border.show === undefined) ? "remove-column-left" : "add-column-left"} text={(border.show || border.show === undefined) ? "Hide left dock" : "Show left dock"} onClick={() => toolbarSettings(border.location)} />;
+                    return <MenuItem
+                      key={index}
+                      icon={border.show === true ? "remove-column-left" : "add-column-left"}
+                      text={(border.show || border.show === undefined) ? "Hide left dock" : "Show left dock"}
+                      onClick={() => toolbarSettings(border.location)}
+                    />;
                   case "right":
-                    return <MenuItem key={index} icon={(border.show || border.show === undefined) ? "remove-column-right" : "add-column-right"} text={(border.show || border.show === undefined) ? "Hide right dock" : "Show right dock"} onClick={() => toolbarSettings(border.location)} />;
+                    return <MenuItem
+                      key={index}
+                      icon={border.show === true ? "remove-column-right" : "add-column-right"}
+                      text={(border.show || border.show === undefined) ? "Hide right dock" : "Show right dock"}
+                      onClick={() => toolbarSettings(border.location)}
+                    />;
                   default:
                     return null;
                 }
@@ -72,14 +87,16 @@ export const AppHeader = ({
           ?
           customMenu.map((cm:any, index:number) => {
             const { icon, name, menu } = cm;
-            return (<Popover
-              key={index}
-              content={menu}
-              minimal={true}
-              position={Position.BOTTOM_LEFT}
-            >
-              <Button className={Classes.MINIMAL} icon={icon} text={name} />
-            </Popover>)
+            return (
+              <Popover
+                key={index}
+                content={menu}
+                minimal={true}
+                position={Position.BOTTOM_LEFT}
+              >
+                <Button className={Classes.MINIMAL} icon={icon} text={name} />
+              </Popover>
+            );
           })
           :
           null
@@ -106,3 +123,5 @@ export const AppHeader = ({
     </NavbarGroup>
   </Navbar>
 );
+
+export default AppHeader;

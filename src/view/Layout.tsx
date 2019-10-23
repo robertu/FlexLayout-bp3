@@ -296,10 +296,10 @@ export class Layout extends React.Component<ILayoutProps, any> {
         const selectedTab = child.getParent()!.getChildren()[
           (child.getParent() as TabSetNode).getSelected()
         ];
-        if (selectedTab === undefined) {
-          // this should not happen!
-          console.warn("undefined selectedTab should not happen");
-        }
+        // if (selectedTab === undefined) { // TODO
+        //   // this should not happen!
+        //   console.warn("undefined selectedTab should not happen");
+        // }
         tabComponents[child.getId()] = (
           <Tab
             key={child.getId()}
@@ -679,11 +679,11 @@ export class Layout extends React.Component<ILayoutProps, any> {
   }
 
   i18nName(id: I18nLabel, param?: string) {
-    let message = undefined;
+    let message = null;
     if (this.props.i18nMapper) {
       message = this.props.i18nMapper(id, param);
     }
-    if (message === undefined) {
+    if (message === null) {
       message = id + (param === undefined ? "" : param);
     }
     return message;

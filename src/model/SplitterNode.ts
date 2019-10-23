@@ -32,6 +32,7 @@ class SplitterNode extends Node {
 
   /** @hidden @internal */
   _setWeight(value: number): void {
+    return;
   }
 
   /** @hidden @internal */
@@ -41,6 +42,7 @@ class SplitterNode extends Node {
 
   /** @hidden @internal */
   _updateAttrs(json: any): void {
+    return;
   }
 
   /** @hidden @internal */
