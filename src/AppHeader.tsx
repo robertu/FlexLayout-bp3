@@ -1,5 +1,5 @@
-import { Alignment, Button, Classes, Icon, Menu, MenuDivider, MenuItem, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Popover, Position } from "@blueprintjs/core";
-import React from "react";
+import { Alignment, Button, Classes, Menu, MenuDivider, MenuItem, Navbar, NavbarDivider, NavbarGroup, NavbarHeading, Popover, Position } from "@blueprintjs/core";
+import * as React from "react";
 // import React, { MouseEvent } from 'react';
 import { AppHeaderLogo } from './AppHeaderLogo';
 

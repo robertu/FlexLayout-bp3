@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import * as React from "react";
 import Model from "./model/Model";
 import Layout from "./view/Layout";
 import { AppHeader } from "./AppHeader";
@@ -15,10 +15,10 @@ interface AppLayoutProps {
 }
 
 export const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title, component, userMenu}: AppLayoutProps) => {
-  const [layoutComponents, setLayoutComponents] = useState<any>(startSettings);
-  const [model, setModel] = useState<any>(Model.fromJson(startSettings));
-  const [layoutStyle, setLayoutStyle] = useState<any>({left: "6px,", right: "6px", bottom: "6px"});
-  const [lightTheme, setLightTheme] = useState<boolean>(true);
+  const [layoutComponents, setLayoutComponents] = React.useState<any>(startSettings);
+  const [model, setModel] = React.useState<any>(Model.fromJson(startSettings));
+  const [layoutStyle, setLayoutStyle] = React.useState<any>({left: "6px,", right: "6px", bottom: "6px"});
+  const [lightTheme, setLightTheme] = React.useState<boolean>(true);
 
   const themeSwitch = () => {
     if (lightTheme) {
@@ -29,7 +29,7 @@ export const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title,
     setLightTheme(!lightTheme);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (component !== null) {
       nodeCreator(component.name, component.layout);
     }
@@ -138,7 +138,8 @@ export const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title,
           title={title}
           userMenu={userMenu}
       />
-      <Layout style={layoutStyle} model={model} factory={factory} onModelChange={actionModel} lightTheme={lightTheme} />
+      <Layout model={model} factory={factory} onModelChange={actionModel}  />
+      {/* <Layout style={layoutStyle} model={model} factory={factory} onModelChange={actionModel} lightTheme={lightTheme} /> */}
     </div>
   );
 };
