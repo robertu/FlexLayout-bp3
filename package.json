@@ -1,7 +1,7 @@
 {
-  "name": "flexlayout-react",
+  "name": "flexlayout-react-bp3",
   "version": "0.3.4",
-  "description": "A multi-tab layout manager",
+  "description": "A multi-tab layout manager with blueprintjs",
   "main": "lib/index.js",
   "types": "./declarations/index.d.ts",
   "keywords": [
@@ -28,7 +28,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts*' ",
     "doc": "typedoc --out typedoc --mode file --exclude \"**/examples/**/*.tsx\"  --readme none "
   },
-  "author": "Caplin Systems Ltd",
+  "author": "Caplin Systems Ltd and Robert Urbańczyk",
   "repository": "https://github.com/caplin/FlexLayout",
   "license": "ISC",
   "peerDependencies": {
@@ -37,8 +37,8 @@
   },
   "devDependencies": {
     "@types/jasmine": "^2.8.16",
-    "@types/react": "^16.8.14",
-    "@types/react-dom": "^16.8.4",
+    "@types/react": "^16.11.0",
+    "@types/react-dom": "^16.11.0",
     "awesome-typescript-loader": "^5.2.0",
     "jasmine": "^3.3.12",
     "prettier": "^1.17.1",
