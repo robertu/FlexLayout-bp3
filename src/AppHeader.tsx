@@ -3,13 +3,13 @@ import * as React from "react";
 // import React, { MouseEvent } from 'react';
 import { AppHeaderLogo } from './AppHeaderLogo';
 
-interface ThemedIconProps {
+export interface ThemedIconProps {
   lightTheme: boolean;
   width: number;
   height: number;
 }
 
-interface ThemedHeaderProps {
+export interface ThemedHeaderProps {
   lightTheme: boolean;
   themeSwitch: () => void;
   toolbarSettings: (name: string) => void;
@@ -22,7 +22,7 @@ interface ThemedHeaderProps {
   // addToTopRight: (name: string) => (event: MouseEvent) => void;
 }
 
-const CustomLogo = ({ lightTheme, width, height }: ThemedIconProps) => <AppHeaderLogo width={width} height={height} lightTheme={lightTheme} />;
+export const CustomLogo = ({ lightTheme, width, height }: ThemedIconProps) => <AppHeaderLogo width={width} height={height} lightTheme={lightTheme} />;
 
 export const AppHeader = ({
   lightTheme,

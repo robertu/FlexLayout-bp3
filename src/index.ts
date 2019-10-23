@@ -15,9 +15,11 @@ import TabSetNode from "./model/TabSetNode";
 import Orientation from "./Orientation";
 import Rect from "./Rect";
 import Layout from "./view/Layout";
+import AppLayout from "./AppLayout";
 
 export {
     Layout,
+    AppLayout,
     I18nLabel,
     Actions,
     Action,
@@ -38,6 +40,7 @@ export {
 
 export default {
     Layout,
+    AppLayout,
     I18nLabel,
     Actions,
     Action,
