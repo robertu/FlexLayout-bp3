@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core";
+import Actions from "../model/Actions";
 import TabNode from "../model/TabNode";
 import TabSetNode from "../model/TabSetNode";
-import Actions from "../model/Actions";
 import Layout from "./Layout";
 
 export interface ITabButtonProps {
@@ -21,7 +21,7 @@ export class DropdownMenu extends React.PureComponent<any, ITabButtonProps> {
             this.props.layout.maximize(parentNode);
         }
     }
-    public render() {
+    render() {
         // const parentNode = this.props.node.getParent() as TabSetNode;
         const exampleMenu = (
             <Menu>

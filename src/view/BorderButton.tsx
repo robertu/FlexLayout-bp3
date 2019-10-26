@@ -2,11 +2,14 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { I18nLabel } from "../I18nLabel";
 import Actions from "../model/Actions";
-import TabNode from "../model/TabNode";
 import BorderNode from "../model/BorderNode";
+import TabNode from "../model/TabNode";
 import Rect from "../Rect";
 import Layout from "./Layout";
+
+
 import { Icon } from "@blueprintjs/core";
+
 
 /** @hidden @internal */
 export interface IBorderButtonProps {
