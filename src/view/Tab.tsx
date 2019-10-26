@@ -48,15 +48,53 @@ export class Tab extends React.Component<ITabProps, any> {
 
     render() {
         const cm = this.props.layout.getClassName;
-
+        const lightTheme = this.props.layout.isLightTheme();
         const node = this.props.node;
+        const classes = node.getClassName();
         const parentNode = node.getParent() as TabSetNode;
+        const nodeId = parentNode.getId();
+        const flexlayoutBorderInnerBottom : HTMLElement | null = document.querySelector(".flexlayout__border_inner_bottom");
+        const flexlayoutTabBorderBottom : HTMLElement | null = document.querySelector(".flexlayout__tab-border_bottom");
         const style: JSMap<any> = node._styleWithPosition({
             display: this.props.selected ? "block" : "none"
         });
-
+        if (nodeId === "border_bottom") {
+            style.height = `${parseInt(style.height, 10) + 6}px`;
+            if (lightTheme) {
+                style.background = "#e1e8ed";  
+            } else {
+                style.background = "#394b59";  
+            }
+            style.borderRadius = "3px 3px 0px 0px";
+        }
+        if (nodeId === "border_left") {
+            style.width = `${parseInt(style.width, 10) + 6}px`;
+            style.left = `${parseInt(style.left, 10) - 6}px`;
+            if (lightTheme) {
+                style.background = "#e1e8ed";  
+            } else {
+                style.background = "#394b59";  
+            }
+            style.borderRadius = "0px 3px 3px 0px";
+        }
+        if (nodeId === "border_right") {
+            style.width = `${parseInt(style.width, 10) + 6}px`;
+            style.left = `${parseInt(style.left, 10)}px`;
+            if (lightTheme) {
+                style.background = "#e1e8ed";  
+            } else {
+                style.background = "#394b59";  
+            }
+            style.borderRadius = "3px 0px 0px 3px";
+        }
         if (parentNode.isMaximized()) {
             style.zIndex = 100;
+        }
+        if(flexlayoutTabBorderBottom !== null) {
+            const left:any = flexlayoutTabBorderBottom.style.left;
+            if (flexlayoutBorderInnerBottom !== null && parseInt(style.left, 10) >= 25) {
+                flexlayoutBorderInnerBottom.style.paddingLeft = `${parseInt(left, 10) - 25}px`;
+            }
         }
 
         let child;
@@ -64,7 +102,7 @@ export class Tab extends React.Component<ITabProps, any> {
             child = this.props.factory(node);
         }
 
-        return <div className={cm("flexlayout__tab")}
+        return <div className={cm(`flexlayout__tab flexlayout__tab-${nodeId} ${classes}`)}
             onMouseDown={this.onMouseDown}
             onTouchStart={this.onMouseDown}
             style={style}>{child}

@@ -1,11 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { I18nLabel } from "..";
+
+import DropdownMenu from "./DropdownMenu";
+import Layout from "./Layout";
+
+import Rect from "../Rect";
+
 import Actions from "../model/Actions";
 import TabNode from "../model/TabNode";
 import TabSetNode from "../model/TabSetNode";
-import Rect from "../Rect";
-import Layout from "./Layout";
+
+import { Icon } from "@blueprintjs/core";
 
 /** @hidden @internal */
 export interface ITabButtonProps {
@@ -117,8 +123,9 @@ export class TabButton extends React.Component<ITabButtonProps, any> {
 
         let classNames = cm("flexlayout__tab_button");
         const node = this.props.node;
-
-        if (this.props.selected) {
+        const parentNode = this.props.node.getParent() as TabSetNode;
+        const children = parentNode.getChildren();
+        if (this.props.selected && children.length > 1) {
             classNames += " " + cm("flexlayout__tab_button--selected");
         }
         else {
@@ -140,7 +147,7 @@ export class TabButton extends React.Component<ITabButtonProps, any> {
         this.props.layout.customizeTab(node, renderState);
 
         let content = <div ref={ref => this.contentRef = (ref === null) ? undefined : ref} className={cm("flexlayout__tab_button_content")}>{renderState.content}</div>;
-        const leading = <div className={cm("flexlayout__tab_button_leading")}>{renderState.leading}</div>;
+        // const leading = <div className={cm("flexlayout__tab_button_leading")}>{renderState.leading}<DropdownMenu /></div>;
 
         if (this.state.editing) {
             const contentStyle = { width: this.contentWidth + "px" };
@@ -162,22 +169,27 @@ export class TabButton extends React.Component<ITabButtonProps, any> {
                 onMouseDown={this.onCloseMouseDown}
                 onClick={this.onClose}
                 onTouchStart={this.onCloseMouseDown}
-            />;
+            ><Icon icon="cross" /></div>;
         }
 
-        return <div ref={ref => this.selfRef = (ref === null) ? undefined : ref}
-            style={{
-                visibility: this.props.show ? "visible" : "hidden",
-                height: this.props.height
-            }}
-            className={classNames}
-            onMouseDown={this.onMouseDown}
-            onTouchStart={this.onMouseDown}>
-            {leading}
-            {content}
-            {closeButton}
-        </div>;
+        return (
+            <div ref={ref => this.selfRef = (ref === null) ? undefined : ref}
+                style={{
+                    visibility: this.props.show ? "visible" : "hidden",
+                    height: this.props.height
+                }}
+                className={classNames}
+                onMouseDown={this.onMouseDown}
+                onTouchStart={this.onMouseDown}
+            >
+                <div className="dropdown_menu_container" onMouseDown={this.onCloseMouseDown} onTouchStart={this.onCloseMouseDown}>
+                    <DropdownMenu node={this.props.node} layout={this.props.layout} />
+                </div>
+                {content}
+                {closeButton}
+            </div>
+        );
     }
 }
 
-// export default TabButton;
+export default TabButton;

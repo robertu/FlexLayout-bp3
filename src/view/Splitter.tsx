@@ -110,12 +110,11 @@ export class Splitter extends React.Component<ISplitterProps, any> {
                 cursor: this.props.node.getOrientation() === Orientation.HORZ ? "ns-resize" : "ew-resize"
             }
         );
-
         return  <div
             style={style}
             onTouchStart={this.onMouseDown}
             onMouseDown={this.onMouseDown}
-            className={cm("flexlayout__splitter")}/>;
+            className={cm(`flexlayout__splitter ${this.props.node.getOrientation() === Orientation.HORZ ? "splitter_horizontal" : "splitter_vertical"}`)}/>;
     }
 }
 

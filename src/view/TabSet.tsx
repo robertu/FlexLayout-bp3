@@ -7,6 +7,8 @@ import PopupMenu from "../PopupMenu";
 import Layout from "./Layout";
 import { TabButton } from "./TabButton";
 
+import { Icon } from "@blueprintjs/core";
+
 /** @hidden @internal */
 export interface ITabSetProps {
     layout: Layout;
@@ -80,6 +82,7 @@ export class TabSet extends React.Component<ITabSetProps, any> {
         const cm = this.props.layout.getClassName;
 
         const node = this.props.node;
+        const selectedNode = node.getSelectedNode();
         const style = node._styleWithPosition();
 
         if (this.props.node.isMaximized()) {
@@ -126,9 +129,14 @@ export class TabSet extends React.Component<ITabSetProps, any> {
         let toolbar;
         if (this.showToolbar === true) {
             if (this.props.node.isEnableMaximize()) {
-                buttons.push(<button key="max"
-                    className={cm("flexlayout__tab_toolbar_button-" + (node.isMaximized() ? "max" : "min"))}
-                    onClick={this.onMaximizeToggle}/>);
+                buttons.push(
+                    <button
+                        key="max"
+                        className={cm("flexlayout__tab_toolbar_button-" + (node.isMaximized() ? "max" : "min"))}
+                        onClick={this.onMaximizeToggle}
+                    >
+                        <Icon icon={node.isMaximized() ? "minimize" : "maximize"} />
+                    </button>);
             }
             toolbar = <div key="toolbar" ref={ref => this.toolbarRef = (ref === null) ? undefined : ref} className={cm("flexlayout__tab_toolbar")}
                 onMouseDown={this.onInterceptMouseDown}>
@@ -179,14 +187,14 @@ export class TabSet extends React.Component<ITabSetProps, any> {
                 {toolbar}
             </div>;
             tabStrip = <div className={tabStripClasses}
-                style={{ height: node.getTabStripHeight() + "px", top: node.getHeaderHeight() + "px" }}>
+                style={{ display: selectedNode === undefined ? "none" : "", height: node.getTabStripHeight() + "px", top: node.getHeaderHeight() + "px" }}>
                 <div ref={ref => this.headerRef = (ref === null) ? undefined : ref} className={cm("flexlayout__tab_header_inner")}>
                     {tabs}
                 </div>
             </div>;
         }
         else {
-            tabStrip = <div className={tabStripClasses} style={{ top: "0px", height: node.getTabStripHeight() + "px" }}
+            tabStrip = <div className={tabStripClasses} style={{ display: selectedNode === undefined ? "none" : "", top: "0px", height: node.getTabStripHeight() + "px" }}
                 onMouseDown={this.onMouseDown}
                 onTouchStart={this.onMouseDown}>
                 <div ref={ref => this.headerRef = (ref === null) ? undefined : ref} className={cm("flexlayout__tab_header_inner")}>

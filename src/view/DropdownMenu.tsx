@@ -36,3 +36,5 @@ export class DropdownMenu extends React.PureComponent<any, ITabButtonProps> {
         );
     }
 }
+
+export default DropdownMenu;
