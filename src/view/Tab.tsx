@@ -48,7 +48,6 @@ export class Tab extends React.Component<ITabProps, any> {
 
     render() {
         const cm = this.props.layout.getClassName;
-        // const lightTheme = this.props.layout.isLightTheme();
         const node = this.props.node;
         const classes = node.getClassName();
         const parentNode = node.getParent() as TabSetNode;
@@ -59,27 +58,12 @@ export class Tab extends React.Component<ITabProps, any> {
             display: this.props.selected ? "block" : "none"
         });
         if (nodeId === "border_bottom") {
-            // if (lightTheme) {
-            //     style.background = "#e1e8ed";  
-            // } else {
-            //     style.background = "#394b59";  
-            // }
             style.borderRadius = "3px 3px 0px 0px";
         }
         if (nodeId === "border_left") {
-            // if (lightTheme) {
-            //     style.background = "#e1e8ed";  
-            // } else {
-            //     style.background = "#394b59";  
-            // }
             style.borderRadius = "0px 3px 3px 0px";
         }
         if (nodeId === "border_right") {
-            // if (lightTheme) {
-            //     style.background = "#e1e8ed";  
-            // } else {
-            //     style.background = "#394b59";  
-            // }
             style.borderRadius = "3px 0px 0px 3px";
         }
         if (parentNode.isMaximized()) {

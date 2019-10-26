@@ -35,7 +35,7 @@ export const AppHeader = ({
   title,
   userMenu
 }: IThemedHeaderProps) => (
-  <Navbar className={lightTheme ? undefined : Classes.DARK}>
+  <Navbar>
     <NavbarGroup align={Alignment.LEFT}>
       <Popover
         content={

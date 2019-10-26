@@ -39,7 +39,6 @@ export interface ILayoutProps {
   onModelChange?: (model: Model) => void;
   classNameMapper?: (defaultClassName: string) => string;
   i18nMapper?: (id: I18nLabel, param?: string) => string;
-  lightTheme: boolean;
   style: any;
 }
 
@@ -666,10 +665,6 @@ export class Layout extends React.Component<ILayoutProps, any> {
     if (this.props.onRenderTab) {
       this.props.onRenderTab(tabNode, renderValues);
     }
-  }
-
-  isLightTheme() {
-    return this.props.lightTheme;
   }
 
   /** @hidden @internal */

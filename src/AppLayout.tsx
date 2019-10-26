@@ -126,7 +126,7 @@ const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title, compon
   };
 
   return (
-    <div className={`App ${lightTheme ? "light" : "dark"}`}>
+    <div className={"App"}>
       <AppHeader
           customMenu={customMenu}
           leftMenu={leftMenu}
@@ -139,7 +139,7 @@ const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title, compon
           userMenu={userMenu}
       />
       {/* <Layout model={model} factory={factory} onModelChange={actionModel}  /> */}
-      <Layout style={layoutStyle} model={model} factory={factory} onModelChange={actionModel} lightTheme={lightTheme} />
+      <Layout style={layoutStyle} model={model} factory={factory} onModelChange={actionModel} />
     </div>
   );
 };
