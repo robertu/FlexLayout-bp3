@@ -5,7 +5,7 @@ import TabNode from "../model/TabNode";
 import TabSetNode from "../model/TabSetNode";
 import PopupMenu from "../PopupMenu";
 import Layout from "./Layout";
-import { TabButton } from "./TabButton";
+import TabButton from "./TabButton";
 
 import { Icon } from "@blueprintjs/core";
 
