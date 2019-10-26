@@ -17,9 +17,18 @@ export class BorderTabSet extends React.Component<IBorderTabSetProps, any> {
 
     render() {
         const cm = this.props.layout.getClassName;
-
         const border = this.props.border;
         const style = border.getTabHeaderRect()!.styleWithPosition({});
+        if (border.getLocation().getName() === "bottom") {
+            style.width = `${parseInt(style.width) + 12}px`;
+        } else if(border.getLocation().getName() === "left") {
+            style.height = `${parseInt(style.height) + 6}px`;
+
+        } else if(border.getLocation().getName() === "right") {
+            style.height = `${parseInt(style.height) + 6}px`;
+
+        }
+        
         const tabs = [];
         if (border.getLocation() !== DockLocation.LEFT) {
             for (let i = 0; i < border.getChildren().length; i++) {

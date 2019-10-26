@@ -1,10 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { I18nLabel } from "..";
+import { I18nLabel } from "../I18nLabel";
 import Actions from "../model/Actions";
 import TabNode from "../model/TabNode";
+import BorderNode from "../model/BorderNode";
 import Rect from "../Rect";
 import Layout from "./Layout";
+import { Icon } from "@blueprintjs/core";
 
 /** @hidden @internal */
 export interface IBorderButtonProps {
@@ -61,6 +63,7 @@ export class BorderButton extends React.Component<IBorderButtonProps, any> {
 
     render() {
         const cm = this.props.layout.getClassName;
+        const parent = this.props.node.getParent() as BorderNode;
         let classNames = cm("flexlayout__border_button") + " " +
             cm("flexlayout__border_button_" + this.props.border);
         const node = this.props.node;
@@ -98,17 +101,26 @@ export class BorderButton extends React.Component<IBorderButtonProps, any> {
                 onMouseDown={this.onCloseMouseDown}
                 onClick={this.onClose}
                 onTouchStart={this.onCloseMouseDown}
-            />;
+                style={parent.getClassName() === "border_right" ? {marginLeft: "10px", marginRight: "0px"} : {marginLeft: "0px", marginRight: "10px"}}
+            ><Icon icon="cross" /></div>;
         }
-
         return <div ref={ref => this.selfRef = (ref === null) ? undefined : ref}
             style={{}}
             className={classNames}
             onMouseDown={this.onMouseDown}
             onTouchStart={this.onMouseDown}>
             {leading}
+            {
+                parent.getClassName() !== "border_right"
+                &&
+                closeButton
+            }
             {content}
-            {closeButton}
+            {
+                parent.getClassName() === "border_right"
+                &&
+                closeButton
+            }
         </div>;
     }
 }

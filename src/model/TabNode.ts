@@ -29,6 +29,7 @@ class TabNode extends Node implements IDraggable {
 
     attributeDefinitions.add("name", "[Unnamed Tab]").setType(Attribute.STRING);
     attributeDefinitions.add("component", undefined).setType(Attribute.STRING);
+    attributeDefinitions.add("layout", undefined);
     attributeDefinitions.add("config", undefined).setType(Attribute.JSON);
 
     attributeDefinitions.addInherited("enableClose", "tabEnableClose").setType(Attribute.BOOLEAN);
@@ -70,6 +71,10 @@ class TabNode extends Node implements IDraggable {
 
   getComponent() {
     return this._getAttributeAsStringOrUndefined("component");
+  }
+
+  getLayout() {
+    return this._getAttributeAsStringOrUndefined("layout");
   }
 
   /**

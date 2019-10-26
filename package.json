@@ -21,11 +21,11 @@
   "scripts": {
     "devserver": "webpack-dev-server",
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
-    "build:commonjs": "tsc -p tsconfig2.json",
+    "build:commonjs": "tsc -p tsconfig.json",
     "build:umd": "webpack --config webpack_build.config.js",
     "build:umd:min": "webpack -p --config webpack_build_min.config.js",
     "test": "npm run test:lint",
-    "test:lint": "tslint -c tslint.json -p tsconfig.json -e test 'src/**/*.ts*' ",
+    "test:lint": "tslint -c tslint.json -p tsconfig-dist.json -e test 'src/**/*.ts*' ",
     "doc": "typedoc --out typedoc --mode file --exclude \"**/examples/**/*.tsx\"  --readme none "
   },
   "author": "Caplin Systems Ltd and Robert Urbańczyk",
@@ -44,6 +44,7 @@
     "jasmine": "^3.3.12",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "prettier": "^1.17.1",
     "source-map-loader": "^0.2.3",
     "style-loader": "^1.0.0",

@@ -1,6 +1,5 @@
 import * as React from "react";
 import AppHeader from "./AppHeader";
-import "./AppLayout.less";
 import Model from "./model/Model";
 import Layout from "./view/Layout";
 
@@ -139,8 +138,8 @@ const AppLayout = ({startSettings, menuLogo, customMenu, leftMenu, title, compon
           title={title}
           userMenu={userMenu}
       />
-      <Layout model={model} factory={factory} onModelChange={actionModel}  />
-      {/* <Layout style={layoutStyle} model={model} factory={factory} onModelChange={actionModel} lightTheme={lightTheme} /> */}
+      {/* <Layout model={model} factory={factory} onModelChange={actionModel}  /> */}
+      <Layout style={layoutStyle} model={model} factory={factory} onModelChange={actionModel} lightTheme={lightTheme} />
     </div>
   );
 };

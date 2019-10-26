@@ -39,6 +39,8 @@ export interface ILayoutProps {
   onModelChange?: (model: Model) => void;
   classNameMapper?: (defaultClassName: string) => string;
   i18nMapper?: (id: I18nLabel, param?: string) => string;
+  lightTheme: boolean;
+  style: any;
 }
 
 /**
@@ -217,6 +219,7 @@ export class Layout extends React.Component<ILayoutProps, any> {
       <div
         ref={self => (this.selfRef = self === null ? undefined : self)}
         className={this.getClassName("flexlayout__layout")}
+        style={this.props.style}
       >
         {tabSetComponents}
         {this.tabIds.map(t => {
@@ -278,7 +281,7 @@ export class Layout extends React.Component<ILayoutProps, any> {
     const drawChildren = node._getDrawChildren();
 
     for (const child of drawChildren!) {
-        if (child instanceof SplitterNode) {
+      if (child instanceof SplitterNode) {
         splitterComponents.push(
           <Splitter key={child.getId()} layout={this} node={child} />
         );
@@ -665,6 +668,10 @@ export class Layout extends React.Component<ILayoutProps, any> {
     }
   }
 
+  isLightTheme() {
+    return this.props.lightTheme;
+  }
+
   /** @hidden @internal */
   customizeTabSet(
     tabSetNode: TabSetNode | BorderNode,
@@ -678,7 +685,7 @@ export class Layout extends React.Component<ILayoutProps, any> {
     }
   }
 
-  i18nName(id: I18nLabel, param?: string):string {
+  i18nName(id: I18nLabel, param?: string): string {
     let message = null;
     if (this.props.i18nMapper) {
       message = this.props.i18nMapper(id, param);

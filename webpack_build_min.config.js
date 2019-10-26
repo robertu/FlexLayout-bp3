@@ -1,5 +1,8 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
+const isProduction = process.env.NODE_ENV === 'production';
+
+const config = {
   entry: {
     flexlayout_min: "./src/index.ts"
   },
@@ -7,7 +10,7 @@ module.exports = {
   output: {
     path: __dirname,
     library: "FlexLayout",
-    libraryTarget:"umd",
+    libraryTarget: "umd",
     filename: "./dist/[name].js"
   },
   externals: {
@@ -17,7 +20,7 @@ module.exports = {
       commonjs2: 'react',
       amd: 'react'
     },
-    "react-dom":{
+    "react-dom": {
       root: 'ReactDOM',
       commonjs: 'react-dom',
       commonjs2: 'react-dom',
@@ -25,33 +28,43 @@ module.exports = {
     }
   },
   resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
-    },
-    module: {
-        rules: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader"},
-            {
-            test: /\.less$/,
-              use: [
-                {
-                  loader: 'style-loader',
-                },
-                {
-                  loader: 'css-loader',
-                },
-                {
-                  loader: 'less-loader',
-                  options: {
-                    strictMath: false,
-                    noIeCompat: true,
-                  },
-                },
-              ],
-            },
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
-        ]
-    }
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: [".ts", ".tsx", ".js", ".json"]
+  },
+  module: {
+    rules: [
+      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      {
+        test: /\.less$/,
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'less-loader'
+        ],
+        // use: [
+        //   {
+        //     loader: 'style-loader',
+        //   },
+        //   {
+        //     loader: 'css-loader',
+        //   },
+        //   {
+        //     loader: 'less-loader',
+        //     options: {
+        //       strictMath: false,
+        //       noIeCompat: true,
+        //     },
+        //   },
+        // ],
+      },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+    ]
+  },
+  // Add an instance of the MiniCssExtractPlugin to the plugins list
+  // But remember - only for production!
+  plugins: isProduction ? [new MiniCssExtractPlugin()] : []
 };
+
+module.exports = config;
