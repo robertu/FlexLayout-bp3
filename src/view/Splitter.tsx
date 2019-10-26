@@ -118,4 +118,4 @@ export class Splitter extends React.Component<ISplitterProps, any> {
     }
 }
 
-// export default Splitter;
+export default Splitter;

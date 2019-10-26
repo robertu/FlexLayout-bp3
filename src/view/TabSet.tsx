@@ -251,4 +251,4 @@ export class TabSet extends React.Component<ITabSetProps, any> {
 }
 
 
-// export default TabSet;
+export default TabSet;

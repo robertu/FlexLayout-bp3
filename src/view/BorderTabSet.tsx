@@ -82,3 +82,4 @@ export class BorderTabSet extends React.Component<IBorderTabSetProps, any> {
     }
 }
 
+export default BorderTabSet;

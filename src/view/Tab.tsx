@@ -48,7 +48,7 @@ export class Tab extends React.Component<ITabProps, any> {
 
     render() {
         const cm = this.props.layout.getClassName;
-        const lightTheme = this.props.layout.isLightTheme();
+        // const lightTheme = this.props.layout.isLightTheme();
         const node = this.props.node;
         const classes = node.getClassName();
         const parentNode = node.getParent() as TabSetNode;
@@ -59,32 +59,27 @@ export class Tab extends React.Component<ITabProps, any> {
             display: this.props.selected ? "block" : "none"
         });
         if (nodeId === "border_bottom") {
-            style.height = `${parseInt(style.height, 10) + 6}px`;
-            if (lightTheme) {
-                style.background = "#e1e8ed";  
-            } else {
-                style.background = "#394b59";  
-            }
+            // if (lightTheme) {
+            //     style.background = "#e1e8ed";  
+            // } else {
+            //     style.background = "#394b59";  
+            // }
             style.borderRadius = "3px 3px 0px 0px";
         }
         if (nodeId === "border_left") {
-            style.width = `${parseInt(style.width, 10) + 6}px`;
-            style.left = `${parseInt(style.left, 10) - 6}px`;
-            if (lightTheme) {
-                style.background = "#e1e8ed";  
-            } else {
-                style.background = "#394b59";  
-            }
+            // if (lightTheme) {
+            //     style.background = "#e1e8ed";  
+            // } else {
+            //     style.background = "#394b59";  
+            // }
             style.borderRadius = "0px 3px 3px 0px";
         }
         if (nodeId === "border_right") {
-            style.width = `${parseInt(style.width, 10) + 6}px`;
-            style.left = `${parseInt(style.left, 10)}px`;
-            if (lightTheme) {
-                style.background = "#e1e8ed";  
-            } else {
-                style.background = "#394b59";  
-            }
+            // if (lightTheme) {
+            //     style.background = "#e1e8ed";  
+            // } else {
+            //     style.background = "#394b59";  
+            // }
             style.borderRadius = "3px 0px 0px 3px";
         }
         if (parentNode.isMaximized()) {
@@ -110,4 +105,4 @@ export class Tab extends React.Component<ITabProps, any> {
     }
 }
 
-// export default Tab;
+export default Tab;

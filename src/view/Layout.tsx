@@ -16,10 +16,10 @@ import TabNode from "../model/TabNode";
 import TabSetNode from "../model/TabSetNode";
 import Rect from "../Rect";
 import { JSMap } from "../Types";
-import { BorderTabSet } from "./BorderTabSet";
-import { Splitter } from "./Splitter";
-import { Tab } from "./Tab";
-import { TabSet } from "./TabSet";
+import BorderTabSet from "./BorderTabSet";
+import Splitter from "./Splitter";
+import Tab from "./Tab";
+import TabSet from "./TabSet";
 
 export interface ILayoutProps {
   model: Model;
